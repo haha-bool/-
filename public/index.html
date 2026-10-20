@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>个人外贸操作系统 · Personal Foreign Trade OS</title>
+  <link rel="stylesheet" href="/styles.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='8' fill='%230e7c5a'/%3E%3Cpath d='M8 21l5-10 3 6 3-4 5 8' stroke='%23fff' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E">
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#/">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 17l5-9 3 5 3-3 5 7"/><circle cx="18" cy="6" r="2"/>
+          </svg>
+        </span>
+        <span class="brand-text">
+          <strong>外贸 OS</strong>
+          <small>Personal Trade OS</small>
+        </span>
+      </a>
+
+      <nav class="nav" id="nav">
+        <div class="nav-label">日常</div>
+        <a class="nav-item" href="#/" data-route="/">
+          <span class="ico" data-icon="home"></span><span>驾驶舱</span>
+        </a>
+        <a class="nav-item" href="#/tasks" data-route="/tasks">
+          <span class="ico" data-icon="check"></span><span>今日任务</span>
+        </a>
+        <a class="nav-item" href="#/knowledge" data-route="/knowledge">
+          <span class="ico" data-icon="book"></span><span>知识库</span>
+        </a>
+        <a class="nav-item" href="#/english" data-route="/english">
+          <span class="ico" data-icon="chat"></span><span>英语训练</span>
+        </a>
+
+        <div class="nav-label">业务</div>
+        <a class="nav-item" href="#/crm" data-route="/crm">
+          <span class="ico" data-icon="users"></span><span>客户 CRM</span>
+        </a>
+        <a class="nav-item" href="#/quotes" data-route="/quotes">
+          <span class="ico" data-icon="calculator"></span><span>报价与利润</span>
+        </a>
+        <a class="nav-item" href="#/docs" data-route="/docs">
+          <span class="ico" data-icon="file"></span><span>商务文档</span>
+        </a>
+
+        <div class="nav-label">成长</div>
+        <a class="nav-item" href="#/career" data-route="/career">
+          <span class="ico" data-icon="spark"></span><span>岗位与每日推荐</span>
+        </a>
+        <a class="nav-item" href="#/plan" data-route="/plan">
+          <span class="ico" data-icon="target"></span><span>目标与项目</span>
+        </a>
+        <a class="nav-item" href="#/review" data-route="/review">
+          <span class="ico" data-icon="refresh"></span><span>复盘</span>
+        </a>
+      </nav>
+
+      <div class="sidebar-foot">
+        <a class="nav-item" href="#/settings" data-route="/settings">
+          <span class="ico" data-icon="settings"></span><span>设置与数据</span>
+        </a>
+        <div class="side-version">
+          <span class="local-note"><span class="dot-live"></span> 仅本机</span>
+          <span class="side-ver">v0.3</span>
+        </div>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div class="crumb">
+          <span class="crumb-root">工作台</span>
+          <span class="crumb-sep">/</span>
+          <strong id="crumb-label">驾驶舱</strong>
+        </div>
+        <div class="topbar-right">
+          <span class="topbar-date" id="top-date"></span>
+          <span class="topbar-live"><span class="dot-live"></span>本地运行</span>
+          <a class="icon-btn" href="#/settings" aria-label="设置">
+            <span data-icon="settings" data-size="16"></span>
+          </a>
+        </div>
+      </header>
+      <div class="view" id="view" tabindex="-1">
+        <div class="boot">
+          <div class="spin"></div>
+          <p>正在载入你的工作台…</p>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="toast-wrap" id="toast-wrap" aria-live="polite"></div>
+  <div class="modal-root" id="modal-root" hidden></div>
+
+  <script type="module" src="/js/app.js"></script>
+</body>
+</html>
