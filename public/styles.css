@@ -998,3 +998,11 @@ input[type="search"] { background-color: #fcfdfc; }
   border: 1px solid var(--line); border-radius: 99px; padding: 4px 11px;
 }
 .empty-steps i { font-style: normal; font-family: var(--mono); font-size: 9.5px; color: #9aaba0; }
+
+/* 静态版标识：移动端也保留，避免误以为数据已上云 */
+@media (max-width: 860px) {
+  .static-badge {
+    display: inline-flex; align-items: center;
+    font-size: 9.5px; padding: 2px 7px; white-space: nowrap;
+  }
+}

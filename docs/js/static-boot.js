@@ -65,7 +65,7 @@ if (!hasTasks) {
 
 // 顶部标注：这是静态版，数据只在本机浏览器
 const badge = document.createElement('span');
-badge.className = 'topbar-live';
+badge.className = 'topbar-live static-badge';
 badge.title = 'GitHub Pages 静态版：数据保存在当前浏览器的 localStorage';
 badge.textContent = '静态版 · 本机存储';
 const right = document.querySelector('.topbar-right');
