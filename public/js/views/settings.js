@@ -47,11 +47,11 @@ export default async function render(root) {
         <div class="card-head"><h2>数据与备份</h2></div>
         <div class="card-body">
           <p class="small muted" style="margin-bottom:12px">
-            数据库：<span class="mono">data/trade-os.db</span><br>
-            自动快照：<span class="mono">data/backups/</span>（每次启动 + 关闭时各一份，保留最近 30 份）
+            ${window.__TRADEOS_STATIC__ ? '存储：当前浏览器的 localStorage（每台设备独立）<br>快照：最近一份浏览器本地快照'
+              : `数据库：<span class="mono">data/trade-os.db</span><br>自动快照：<span class="mono">data/backups/</span>（每次启动 + 关闭时各一份，保留最近 30 份）`}
           </p>
           <div class="row" style="gap:8px">
-            <a class="btn" href="/api/export" download>${icon('download', 14)} 导出全部数据</a>
+            <button class="btn" id="export-data">${icon('download', 14)} 导出全部数据</button>
             <button class="btn" id="backup-now">${icon('layers', 14)} 立即快照</button>
             <label class="btn" style="cursor:pointer">
               ${icon('upload', 14)} 导入备份
@@ -117,6 +117,23 @@ export default async function render(root) {
       toast('档案已保存');
     } catch (err) { toast(err.message, 'err'); }
   });
+
+  root.querySelector('#export-data').onclick = async (e) => {
+    const btn = e.currentTarget;
+    btn.disabled = true;
+    try {
+      const payload = await api('/api/export');
+      const blob = new Blob([JSON.stringify(payload, null, 2)], { type: 'application/json;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `trade-os-export-${new Date().toISOString().slice(0, 10)}.json`;
+      a.click();
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+      toast('已导出，文件在下载目录');
+    } catch (err) { toast(err.message, 'err'); }
+    btn.disabled = false;
+  };
 
   root.querySelector('#backup-now').onclick = async (e) => {
     const btn = e.currentTarget;
